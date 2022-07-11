@@ -1,21 +1,23 @@
 package by.home.chaplinskiy.springmvc.config;
 
 import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 import org.springframework.web.servlet.support.AbstractDispatcherServletInitializer;
 
-public class MySpringMvcDispatcherServletInitializer extends AbstractDispatcherServletInitializer {
+public class MySpringMvcDispatcherServletInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
+
     @Override
-    protected WebApplicationContext createServletApplicationContext() {
-        return null;
+    protected Class<?>[] getRootConfigClasses() {
+        return new Class[0];
+    }
+
+    @Override
+    protected Class<?>[] getServletConfigClasses() {
+        return new Class[] {SpringConfig.class};
     }
 
     @Override
     protected String[] getServletMappings() {
-        return new String[0];
-    }
-
-    @Override
-    protected WebApplicationContext createRootApplicationContext() {
-        return null;
+        return new String[] {"/"};
     }
 }
